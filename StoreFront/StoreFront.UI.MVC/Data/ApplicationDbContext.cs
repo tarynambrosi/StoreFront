@@ -9,5 +9,6 @@ namespace StoreFront.UI.MVC.Data
             : base(options)
         {
         }
+        public DbSet<StoreFront.UI.MVC.Models.ContactViewModel>? ContactViewModel { get; set; }
     }
 }

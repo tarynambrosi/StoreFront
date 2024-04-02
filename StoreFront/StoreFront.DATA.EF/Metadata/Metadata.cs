@@ -16,7 +16,7 @@ namespace StoreFront.DATA.EF.Models//.Metadata
         [StringLength(150)]
         public string CategoryName { get; set; } = null!;
 
-        [Display(Name ="Description")]
+        [Display(Name = "Description")]
         [StringLength(500)]
         public string? CategoryDescription { get; set; }
     }
@@ -26,7 +26,7 @@ namespace StoreFront.DATA.EF.Models//.Metadata
         public int ProductId { get; set; }
 
         [Required]
-        [Display(Name ="Product")]
+        [Display(Name = "Product")]
         [StringLength(200)]
         public string ProductName { get; set; } = null!;
 
@@ -35,8 +35,8 @@ namespace StoreFront.DATA.EF.Models//.Metadata
         [Range(0, (double)decimal.MaxValue)]
         public decimal ProductPrice { get; set; }
 
-        [Display(Name ="Description")]
-        [StringLength (500)]
+        [Display(Name = "Description")]
+        [StringLength(500)]
         public string? ProductDescription { get; set; }
 
 
@@ -60,7 +60,7 @@ namespace StoreFront.DATA.EF.Models//.Metadata
 
         [Required]
         [StringLength(75)]
-        [Display(Name = "Knife Type")]
+        [Display(Name = "Type")]
         public string KnifeType { get; set; } = null!;
 
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:c}")]
@@ -72,6 +72,10 @@ namespace StoreFront.DATA.EF.Models//.Metadata
         [Display(Name = "Discontinued?")]
         public bool IsDiscontinued { get; set; }
         public int CategoryId { get; set; }
+
+        [StringLength(75)]
+        [Display(Name = "Image")]
+        public string? KnifeImage { get; set; }
     }
 
     public class OrderMetadata
@@ -147,6 +151,34 @@ namespace StoreFront.DATA.EF.Models//.Metadata
         [Display(Name = "Last Name")]
         [StringLength(50)]
         public string LastName { get; set; } = null!;
+
+        [StringLength(150)]
+        public string? Address { get; set; }
+
+        [StringLength(50)]
+        public string? City { get; set; }
+
+        [StringLength(2)]
+        [DataType(DataType.Text)]
+        public string? State { get; set; }
+
+        [StringLength(5)]
+        [DataType(DataType.PostalCode)]
+        public string? Zip { get; set; }
+
+        [StringLength(24)]
+        [DataType(DataType.PhoneNumber)]
+        public string? Phone { get; set; }
+    }
+
+    public class KnifeBrandMetadata
+    {
+        public int BrandId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Brand")]
+        public string BrandName { get; set; } = null!;
 
         [StringLength(150)]
         public string? Address { get; set; }

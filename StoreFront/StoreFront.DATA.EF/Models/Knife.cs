@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreFront.UI.MVC.Models
+namespace StoreFront.DATA.EF.Models
 {
     public partial class Knife
     {
@@ -12,6 +12,7 @@ namespace StoreFront.UI.MVC.Models
         public int KnifeStatusId { get; set; }
         public bool IsDiscontinued { get; set; }
         public int CategoryId { get; set; }
+        public string? KnifeImage { get; set; }
 
         public virtual Category Category { get; set; } = null!;
         public virtual KnifeBrand? KnifeBrand { get; set; }

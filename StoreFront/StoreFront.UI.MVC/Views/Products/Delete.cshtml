@@ -1,0 +1,83 @@
+﻿@model StoreFront.DATA.EF.Models.Product
+
+@{
+    ViewData["Title"] = "Delete a Product";
+}
+
+
+
+
+<div class="watchs_section layout_padding">
+    <div class="container">
+        <h1 class="watchs_taital">Delete @Model.ProductName?</h1>
+        <div class="watchs_section_2">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="image_1"><img src="#"></div>
+                </div>
+                <div class="col-md-6 text-light">
+                    <h4 class="uni_text">@Model.ProductName</h4>
+                    <p class="watchs_text">
+                        <div>
+                            <dl class="row">
+                                @* <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.ProductName)
+                                </dd> *@
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.ProductPrice)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.ProductPrice)
+                                </dd>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.ProductDescription)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.ProductDescription)
+                                </dd>
+                                @*     <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.IsDiscontinued)
+                                </dt>
+                                <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.IsDiscontinued)
+                                </dd> *@
+                                @* <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.ProductImage)
+                                </dt>
+                                <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.ProductImage)
+                                </dd> *@
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Category.CategoryName)
+                                </dd>
+                                @*  <dt class="col-sm-2">
+                                @Html.DisplayNameFor(model => model.ProductStatus)
+                                </dt>
+                                <dd class="col-sm-10">
+                                @Html.DisplayFor(model => model.ProductStatus.ProductStatusId)
+                                </dd> *@
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Supplier)
+                                </dt>
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Supplier.SupplierName)
+                                </dd>
+                            </dl>
+                        </div>
+                    </p>
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+<form asp-action="Delete">
+    <input type="hidden" asp-for="ProductId" />
+    <a asp-action="Index">Back to Products</a>
+</form>
+    </div>
+</div>
