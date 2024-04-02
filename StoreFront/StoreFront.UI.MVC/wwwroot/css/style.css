@@ -26,7 +26,7 @@ src: url("../fonts/BalooChettan-Regular.ttf");
 @import url(slick.css);
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
-@import url(nice-select.css);
+/*@import url(nice-select.css);*/
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 
@@ -139,13 +139,14 @@ p {
 }
 
 a {
-     color: #222222;
+     color: #fff;
      text-decoration: none;
      outline: none !important;
 }
 
 a,
 .btn {
+    color: white;
      text-decoration: none !important;
      outline: none !important;
      -webkit-transition: all .3s ease-in-out;
@@ -696,7 +697,7 @@ h1.watchs_taital::after {
     color: #989999;
     border: 0px !important;
     background-color: #ffffff !important;
-    padding: 20px 20px 20px 20px;
+/*    padding: 20px 20px 20px 20px;*/
     margin-top: 30px;
     border-radius: 40px;
 }
@@ -844,8 +845,7 @@ textarea#comment::placeholder {
 }
 
 
+/* crud views section*/
 
 
-
-
-
+/* crud views section end */

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<StoreFront.DATA.EF.Models.Knife>
+
+@{
+    ViewData["Title"] = "Shop Knives";
+}
+
+@* <h1>Index</h1> *@
+<div class="watchs_section layout_padding">
+    <div class="container">
+        <h1 class="watchs_taital">Our Knives</h1>
+<p class="text-right">
+            
+            <a asp-action="TiledKnives" class="btn btn-primary">Tile View</a>
+</p>
+<table class="table">
+    <thead class="text-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KnifeType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KnifePrice)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.IsDiscontinued)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KnifeBrand.BrandName)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.KnifeStatus)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td><a asp-action="Details" asp-route-id="@item.KnifeId">
+                @Html.DisplayFor(modelItem => item.KnifeType)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KnifePrice)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.IsDiscontinued)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KnifeBrand.BrandName)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.KnifeStatus.ProductStatusId)
+            </td> *@
+            <td>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <span>
+                            <a asp-action="Edit" asp-route-id="@item.KnifeId">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.KnifeId">Delete</a>
+                        </span>
+
+                        @* <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> | *@
+
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+        <p class="text-center">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Create" class="btn btn-primary">Add a New Knife</a>
+            }
+        </p>
+   </div>
+</div>

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> signInManager
+
+<!DOCTYPE html>
 <html lang="en">
    <head>
       <!-- basic -->
@@ -9,7 +12,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Uoni</title>
+      <title>Ambrosi Brother's Cutlery</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -38,31 +41,108 @@
          <div class="header_main">
             <div class="mobile_menu">
                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                  <div class="logo_mobile"><a href="index.html"><img src="~/images/logo.png"></a></div>
+                  <div class="logo_mobile"><a href="index.html">Ambrosi Bros Cutlery</a></div>
                   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                   </button>
                   <div class="collapse navbar-collapse" id="navbarNav">
                      <ul class="navbar-nav">
-                        <li class="nav-item active">
-                           <a class="nav-link" href="index.html">Home</a>
+                        <li class="nav-item">
+                           <a asp-action="Index" asp-controller="Home">Home</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link" href="watchs.html">Watchs</a>
+                           <a asp-action="Index" asp-controller="Products">Shop Products</a>
                         </li>
                         <li class="nav-item">
-                           <a class="nav-link " href="testimonial.html">Testimonial</a>
+                           <a asp-action="Index" asp-controller="Knives">Shop Knives</a>
                         </li>
                         <li class="nav-item">
                            <a class="nav-link " href="contact.html">Contact</a>
                         </li>
-                            <partial name="_LoginPartial" />
                         <li class="nav-item">
                            <a class="nav-link " href="#"><img src="~/images/search-icon.png"></a>
                         </li>
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Admin <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
+                                        <li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
+                                        <li><a asp-action="Index" asp-controller="Suppliers">Suppliers</a></li>
+                                        <li><a asp-action="Index" asp-controller="Categories">Categories</a></li>
+                                    </ul>
+                                </li>
+                            }
+
+                            @if (signInManager.IsSignedIn(User))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-action="Index" asp-controller="Orders">Orders</a>
+                                </li>
+                            }
+
+                            <partial name="_LoginPartial" />
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
+                                    <g>
+                                    <g>
+                                    <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
+                                          c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
+                                    </g>
+                                 </g>
+                                    <g>
+                                    <g>
+                                    <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
+                                          C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
+                                          c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
+                                          C457.728,97.71,450.56,86.958,439.296,84.91z" />
+                                    </g>
+                                 </g>
+                                    <g>
+                                    <g>
+                                    <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
+                                          c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
+                                    </g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                                    <g>
+                                 </g>
+                              </svg>
+                                </a>
+                            </li>
+              
                      </ul>
                   </div>
                </nav>
@@ -71,11 +151,12 @@
                <div class="logo"><a href="index.html"><img src="~/images/logo.png"></a></div>
                <div class="menu_main">
                   <ul>
-                     <li class="active"><a href="index.html">Home</a></li>
-                     <li><a href="about.html">About</a></li>
-                     <li><a href="watchs.html">Watchs</a></li>
-                     <li><a href="testimonial.html">Testimonial</a></li>
+                     <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                     <li><a asp-action="">About</a></li>
+                     <li><a asp-action="Index" asp-controller="Products">Shop Products</a></li>
+                     <li><a asp-action="Index" asp-controller="Knives">Knives</a></li>
                      <li><a href="contact.html">Contact us</a></li>
+                     <li><a href="~/Identity/Account/Login">Login</a></li>
                      <li><a href="#"><img src="~/images/search-icon.png"></a></li>
                   </ul>
                </div>

@@ -1,0 +1,110 @@
+﻿@model IEnumerable<StoreFront.DATA.EF.Models.Product>
+
+@{
+    ViewData["Title"] = "Our Products";
+}
+
+<div class="watchs_section layout_padding">
+    <div class="container">
+        <h1 class="watchs_taital">Our Products</h1>
+        <p class="text-right">
+
+            <a asp-action="TiledProducts" class="btn btn-primary">Tile View</a>
+        </p>
+        <table class="table">
+            <thead class="text-light">
+                <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+               
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.IsDiscontinued)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+          @*   <th>
+                @Html.DisplayNameFor(model => model.ProductStatus)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Supplier)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ProductId">
+                @Html.DisplayFor(modelItem => item.ProductName)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.IsDiscontinued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductImage)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+           @*  <td>
+                @Html.DisplayFor(modelItem => item.ProductStatus.ProductStatusId)
+            </td> *@
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <span>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                    </span>
+                    @* <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> | *@
+
+                    @*
+                    Conditional Delete Button:
+                    - ONLY allow users to click on the delete button if the product is
+                    not directly related to any Order records
+                    - We'll check the Count() of related records for the product.
+                    If the count is 0, allow delete, otherwise disable the delete button.
+                    *@
+                    @if (item.OrderProducts.Count() == 0)//item.OrderProducts retrieves any related records for the Product
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                    }
+                    else
+                    {
+                        <a disabled="true" class="text-danger" style="text-decoration: line-through;" title="Can't delete - referenced by other records.">Delete</a>
+                    }
+                }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+        <p class="text-center">
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Create" class="btn btn-primary">Add a New Product</a>
+            }
+        </p>
+</div>
+</div>

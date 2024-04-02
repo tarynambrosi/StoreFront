@@ -201,6 +201,7 @@ th {
 }
 
 label {
+    color: #808080
   display: inline-block;
   margin-bottom: 0.5rem;
 }

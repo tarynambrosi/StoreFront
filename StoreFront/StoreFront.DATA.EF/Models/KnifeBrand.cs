@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace StoreFront.UI.MVC.Models
+namespace StoreFront.DATA.EF.Models
 {
     public partial class KnifeBrand
     {
+        public KnifeBrand()
+        {
+            Knives = new HashSet<Knife>();
+        }
+
         public int BrandId { get; set; }
         public string BrandName { get; set; } = null!;
         public string? Address { get; set; }
@@ -12,5 +17,7 @@ namespace StoreFront.UI.MVC.Models
         public string? State { get; set; }
         public string? Zip { get; set; }
         public string? Phone { get; set; }
+
+        public virtual ICollection<Knife> Knives { get; set; }
     }
 }

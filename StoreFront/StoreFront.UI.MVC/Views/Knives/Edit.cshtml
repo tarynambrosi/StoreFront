@@ -1,0 +1,70 @@
+﻿@model StoreFront.DATA.EF.Models.Knife
+
+@{
+    ViewData["Title"] = "Modify " + Model.KnifeType;
+}
+
+@* <h1>Edit</h1> *@
+
+@* <h4>Knife</h4>
+<hr /> *@
+<div class="watchs_section layout_padding">
+    <div class="container">
+        <h1 class="watchs_taital">Modify @Model.KnifeType</h1>
+<div class="row mb-3">
+    <div class="col-md-8 offset-md-2 text-light">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="KnifeId" />
+            <input type="hidden" asp-for="KnifeImage"/>
+            <div class="form-group">
+                <label asp-for="KnifeBrand.BrandName" class="control-label"></label>
+                <select asp-for="KnifeBrandId" class="form-control" asp-items="ViewBag.KnifeBrandId"></select>
+                <span asp-validation-for="KnifeBrandId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KnifeType" class="control-label"></label>
+                <input asp-for="KnifeType" class="form-control" />
+                <span asp-validation-for="KnifeType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KnifePrice" class="control-label"></label>
+                <input asp-for="KnifePrice" class="form-control" />
+                <span asp-validation-for="KnifePrice" class="text-danger"></span>
+            </div>
+          @*   <div class="form-group">
+                <label asp-for="KnifeStatusId" class="control-label"></label>
+                <select asp-for="KnifeStatusId" class="form-control" asp-items="ViewBag.KnifeStatusId"></select>
+                <span asp-validation-for="KnifeStatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDiscontinued" /> @Html.DisplayNameFor(model => model.IsDiscontinued)
+                </label>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="KnifeImage" class="control-label"></label>
+                        @* <input asp-for="KnifeImage" class="form-control" /> *@
+                        <input type="file" asp-for="Image" class="form-control" />
+                        <span asp-validation-for="KnifeImage" class="text-danger"></span>
+                    </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to Knives</a>
+</div>
+</div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

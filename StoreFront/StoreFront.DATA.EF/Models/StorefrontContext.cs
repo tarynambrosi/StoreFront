@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace StoreFront.UI.MVC.Models
+namespace StoreFront.DATA.EF.Models
 {
     public partial class StorefrontContext : DbContext
     {
@@ -180,7 +180,9 @@ namespace StoreFront.UI.MVC.Models
 
             modelBuilder.Entity<Knife>(entity =>
             {
-                entity.HasNoKey();
+                entity.Property(e => e.KnifeImage)
+                    .HasMaxLength(75)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.KnifePrice).HasColumnType("money");
 
@@ -189,18 +191,18 @@ namespace StoreFront.UI.MVC.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Category)
-                    .WithMany()
+                    .WithMany(p => p.Knives)
                     .HasForeignKey(d => d.CategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Knives_Categories");
 
                 entity.HasOne(d => d.KnifeBrand)
-                    .WithMany()
+                    .WithMany(p => p.Knives)
                     .HasForeignKey(d => d.KnifeBrandId)
                     .HasConstraintName("FK_Knives_KnifeBrands");
 
                 entity.HasOne(d => d.KnifeStatus)
-                    .WithMany()
+                    .WithMany(p => p.Knives)
                     .HasForeignKey(d => d.KnifeStatusId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Knives_ProductStatuses1");
