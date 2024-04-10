@@ -75,7 +75,8 @@
                 @if (User.IsInRole("Admin"))
                 {
                     <span>
-                        <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
+                        <a asp-action="Edit" asp-route-id="@item.ProductId"><i class="fa fa-pencil-square"></i>Edit</a>
+ |
                     </span>
                     @* <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> | *@
 
@@ -88,11 +89,11 @@
                     *@
                     @if (item.OrderProducts.Count() == 0)//item.OrderProducts retrieves any related records for the Product
                     {
-                        <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProductId" class="text-danger"><i class="fa fa-trash"></i>Delete</a>
                     }
                     else
                     {
-                        <a disabled="true" class="text-danger" style="text-decoration: line-through;" title="Can't delete - referenced by other records.">Delete</a>
+                        <a disabled="true" class="text-danger" style="text-decoration: line-through;" title="Can't delete - referenced by other records."><i class="fa fa-ban">&nbsp;</i>Delete</a>
                     }
                 }
             </td>
@@ -108,3 +109,12 @@
         </p>
 </div>
 </div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            //Update the selector to target the element with the table class
+            $('.table').DataTable();
+        });
+    </script>
+}

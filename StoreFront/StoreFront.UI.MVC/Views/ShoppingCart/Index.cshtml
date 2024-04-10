@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+    decimal? cartTotal = 0;
+}
+
+<!-- watchs section start -->
+<div class="watchs_section layout_padding">
+    <div class="container">
+        <h1 class="watchs_taital">Your Cart</h1>
+
+        <p align="center">
+            <a asp-action="TiledProducts" asp-controller="Products" class="btn btn-info">
+                Continue Shopping
+            </a>
+        </p>
+       
+        @if (Model.Count == 0)
+        {
+            <p class="alert alert-warning text-center">
+                @ViewBag.Message
+            </p>
+        }
+        else
+        {
+            <table class="table text-light">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Quantity</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th></th> @* Left empty for actions *@
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="~/images/t_@item.Value.Product.ProductImage" alt="@item.Value.Product.ProductName" />
+                            </td>
+                            <td>
+                                @* @item.Value.Qty *@
+                                <form asp-action="UpdateCart">
+                                    <input type="hidden" name="productId" value="@item.Key" />
+                                    <input type="text" name="qty" value="@item.Value.Qty" class="form-control d-block mx-auto text-center w-50" />
+                                    <input type="submit" value="Update Cart" class="btn btn-primary btn-sm form-control d-block mx-auto text-center w-50" />
+                                </form>
+                            </td>
+                            <td>
+                                @item.Value.Product.ProductName
+                            </td>
+                            <td>
+                                @* Below we used the HTML helper to include the currency formatting from our Metadata *@
+                                @string.Format($"{item.Value.Product.ProductPrice:c}")
+                                @*
+                        Alternatively, we could have formatted the price manually:
+                        @string.Format($"{item.Value.Product.ProductPrice:c}")
+                        *@
+                            </td>
+                            <td>
+                                @{
+                                    //Calculate the line total and the cart total
+                                    //line total will be displayed here for each individual line item
+                                    //cart total will be displayed after all of the line items
+                                    decimal? lineTotal = item.Value.Qty * item.Value.Product.ProductPrice;//total for 1 line item
+                                    cartTotal += lineTotal;//total for ALL items
+                                }
+                                @string.Format($"{lineTotal:c}")
+                            </td>
+                            <td>
+                                <a asp-action="RemoveFromCart" asp-controller="ShoppingCart" asp-route-id="@item.Key" class="btn btn-danger">Remove from Cart</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="alert alert-success text-center">
+                <p>
+                    Your total before taxes and shipping is @string.Format($"{cartTotal:c}").
+                </p>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <p>
+                        <a asp-action="SubmitOrder" class="btn btn-success">
+                            Submit Order
+                        </a>
+                    </p>
+                }
+                else
+                {
+                    <p>To place this order, you must be logged in!</p>
+                    <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary">Login</a>
+                }
+
+            </div>
+        }
+    </div>
+</div>
+<!-- watchs section end -->

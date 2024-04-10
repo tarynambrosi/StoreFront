@@ -1190,7 +1190,7 @@
         this.setTransitioning(true);
 
         var complete = function complete() {
-          $$$1(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW);
+          $$$1(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE)/*.addClass(ClassName.SHOW)*/;
           _this._element.style[dimension] = '';
 
           _this.setTransitioning(false);

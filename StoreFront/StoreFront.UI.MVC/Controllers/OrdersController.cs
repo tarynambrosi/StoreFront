@@ -7,24 +7,35 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using StoreFront.DATA.EF.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace StoreFront.UI.MVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class OrdersController : Controller
     {
         private readonly StorefrontContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public OrdersController(StorefrontContext context)
+        public OrdersController(StorefrontContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Orders
         public async Task<IActionResult> Index()
         {
+            if (User.IsInRole("Admin"))
+            {
             var storefrontContext = _context.Orders.Include(o => o.Customer);
             return View(await storefrontContext.ToListAsync());
+            }else
+            {
+                string? userId = (await _userManager.GetUserAsync(User)).Id;
+
+                var storefrontContext = _context.Orders.Where(o => o.CustomerId == userId).Include(o => o.Customer);
+                return View(await storefrontContext.ToListAsync());
+            }
         }
 
         // GET: Orders/Details/5

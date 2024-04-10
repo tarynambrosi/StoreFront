@@ -9,7 +9,7 @@
     <div class="container">
         <h1 class="watchs_taital">@Model.ProductName Details</h1>
         <p class="text-right">
-            <a asp-action="Edit" class="btn btn-primary">Edit</a>
+            <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-primary">Edit</a>
         </p>
         <div class="watchs_section_2">
             <div class="row">

@@ -7,8 +7,13 @@
     <div class="container">
         <h1 class="watchs_taital">Categories</h1>
 
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div id="MessageContent" class="text-center"></div>
+            </div>
+        </div>
 
-<table class="table">
+<table class="table" id="CategoriesTable">
     <thead>
         <tr class="text-white">
             <th>
@@ -22,7 +27,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr class="text-white">
+        <tr class="text-white" id="Category-@item.CategoryId">
             <td>
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
@@ -35,7 +40,10 @@
                         <span>
                         <a asp-action="Edit" asp-route-id="@item.CategoryId">Edit</a> |
                         @* <a asp-action="Details" asp-route-id="@item.CategoryId">Details</a> | *@
-                        <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a>
+                        @* <a asp-action="Delete" asp-route-id="@item.CategoryId">Delete</a> *@
+                        <a data-ajax="true" data-ajax-confirm="Are you sure you want to delete @item.CategoryName?" ajax-data-failure="deleteFailed" data-ajax-success="deleteConfirmed" data-ajax-method="POST" href="~/Categories/AjaxDelete/@item.CategoryId">
+                            Delete    
+                        </a>
                         </span>
                     }
             </td>
@@ -52,3 +60,23 @@
         </p>
 </div>
 </div>
+
+@section scripts {
+    <script>
+        /******************************** AJAX DELETE ********************************/
+        function deleteConfirmed(response, status, data) {
+            //remove the row from the table
+            let rowId = "#Category-" + response.id;
+            console.log(rowId);
+            $("#CategoriesTable").find(rowId).remove();
+
+            //display the status message
+            $("#MessageContent").html("<div class='alert alert-success'>" + response.message + "</div>");
+        }
+
+        function deleteFailed(response, status, data) {
+            //display status message
+            $("#MessageContent").html("<div class='alert alert-danger'>Delete unsuccessful.</div>");
+        }
+    </script>
+}

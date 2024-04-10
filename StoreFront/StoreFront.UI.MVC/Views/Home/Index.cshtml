@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <!-- banner section start -->
@@ -8,23 +8,23 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="container">
-                    <h1 class="banner_taital">Watchs</h1>
-                    <p class="banner_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                    <div class="read_bt"><a href="#">Buy Now</a></div>
+                    <h1 class="banner_taital">From our family to yours</h1>
+                    <p class="banner_text">Ambrosi Bros has been a family-owned and operated business since 1959.</p>
+                    <div class="read_bt"><a asp-action="About" asp-controller="Home">Learn more</a></div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
-                    <h1 class="banner_taital">Watchs</h1>
-                    <p class="banner_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                    <div class="read_bt"><a href="#">Buy Now</a></div>
+                    <h1 class="banner_taital">We stay sharp</h1>
+                    <p class="banner_text">Ask us how you can too with our sharpening services!</p>
+                    <div class="read_bt"><a asp-action="Contact" asp-controller="Home">Contact</a></div>
                 </div>
             </div>
             <div class="carousel-item">
                 <div class="container">
-                    <h1 class="banner_taital">Watchs</h1>
-                    <p class="banner_text">There are many variations of passages of Lorem Ipsum available, but the majority have suffered</p>
-                    <div class="read_bt"><a href="#">Buy Now</a></div>
+                    <h1 class="banner_taital">Need new kitchen gadgets?</h1>
+                    <p class="banner_text">We've got you covered.</p>
+                    <div class="read_bt"><a asp-action="TiledProducts" asp-controller="Products">Shop</a></div>
                 </div>
             </div>
         </div>
@@ -37,7 +37,6 @@
     </div>
 </div>
 <!-- banner section end -->
-      </div>
 <!-- header section end -->
 <!-- background bg start -->
 <div class="background_bg">
@@ -71,7 +70,7 @@
                     </div>
                 </div>
             </div>
-            <div class="seemore_bt"><a href="#">See More</a></div>
+            <div class="seemore_bt"><a href="#">Back to top</a></div>
         </div>
     </div>
     <!-- watchs section end -->
@@ -160,22 +159,19 @@
     <!-- contact section start -->
     <div class="contact_section layout_padding">
         <div class="container">
-            <h1 class="watchs_taital">04<br>Get In Touch</h1>
+            <h1 class="watchs_taital">Get In Touch</h1>
         </div>
         <div class="contact_section_2">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row mb-3">
+                    <div class="col-md-8 offset-md-1">
                         <div class="mail_section_1">
                             <input type="text" class="mail_text" placeholder="Your Name" name="Your Name">
                             <input type="text" class="mail_text" placeholder="Phone Number" name="Phone Number">
                             <input type="text" class="mail_text" placeholder="Email" name="Email">
-                            <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
+                            <textarea class="massage-bt" placeholder="Message" rows="5" id="comment" name="Massage"></textarea>
                             <div class="send_bt"><a href="#">SEND</a></div>
                         </div>
-                    </div>
-                    <div class="col-md-6 padding_right_0">
-                        <div class="map_section"><img src="~/images/map-img.png"></div>
                     </div>
                 </div>
             </div>

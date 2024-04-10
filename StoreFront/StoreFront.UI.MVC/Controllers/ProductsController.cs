@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using StoreFront.DATA.EF.Models;
 using StoreFront.UI.MVC.Utilities;
 using System.Drawing;
+using X.PagedList;
 
 namespace StoreFront.UI.MVC.Controllers
 {
@@ -35,14 +36,45 @@ namespace StoreFront.UI.MVC.Controllers
 
         //Tile View for Products
         [AllowAnonymous]
-        public async Task<IActionResult> TiledProducts()
+        public async Task<IActionResult> TiledProducts(string searchTerm, int categoryId = 0, int page = 1)
         {
+            int pageSize = 5;
+
             var products = _context.Products.Where(p => !p.IsDiscontinued)
                 .Include(p => p.Category)
                 .Include(p => p.Supplier)
-                .Include(p => p.OrderProducts);
+                .Include(p => p.OrderProducts).ToList();
 
-            return View(await products.ToListAsync());
+            //Category filter
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+            ViewBag.Category = 0;
+
+            if (categoryId != 0)
+            {
+                products = products.Where(p => p.CategoryId == categoryId).ToList();
+                ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", categoryId);
+                ViewBag.Category = categoryId;
+            }
+
+            //search filter
+            if (!String.IsNullOrEmpty(searchTerm))
+            {
+                products = products.Where(p =>
+                p.ProductName.ToLower().Contains(searchTerm.ToLower()) ||
+                p.Category.CategoryName.ToLower().Contains(searchTerm.ToLower()) ||
+                p.Supplier.SupplierName.ToLower().Contains(searchTerm.ToLower()) ||
+                p.ProductDescription.ToLower().Contains(searchTerm.ToLower())).ToList();
+
+                ViewBag.NbrResults = products.Count;
+                ViewBag.SearchTerm = searchTerm;
+            }
+            else
+            {
+                ViewBag.NbrResults = null;
+                ViewBag.SearchTerm = null;
+            }
+
+            return View(products.ToPagedList(page, pageSize));
         }
 
         // GET: Products/Details/5
@@ -138,12 +170,8 @@ namespace StoreFront.UI.MVC.Controllers
                 }
                 else
                 {
-                    //If no image was uploaded, assign a default filename
-                    //We also need to add a default image and name it "noimage.png" then copy it to our wwwroot/images folder
                     product.ProductImage = "noimage.png";
                 }
-                //IMAGE UPLOAD - STEP 12
-                //Add noimage.png to our images folder
 
 
                 #endregion

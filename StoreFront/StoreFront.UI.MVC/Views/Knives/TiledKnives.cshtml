@@ -16,13 +16,17 @@
         <div class="watchs_section_2">
             <div class="row">
                 <div class="col-md-6">
+                    <a asp-action="Details" asp-route-id="@item.KnifeId">
                     <div class="image_1"><img src="~/images/@item.KnifeImage" alt="@item.KnifeType"></div>
+                    </a>
                 </div>
                 <div class="col-md-6">
+                    <a asp-action="Details" asp-route-id="@item.KnifeId">
                     <h4 class="uni_text">@item.KnifeType</h4>
+                    </a>
                     <p class="watchs_text">@Html.DisplayFor(modelItem => item.KnifeBrand.BrandName)</p>
                         <h4 class="rate_text"><span style="color: #b60213;"></span>@Html.DisplayFor(modelItem => item.KnifePrice)</h4>
-                    <div class="read_bt1 pb-3"><a href="javascript:void(0)">Add To Cart</a></div>
+                    <div class="read_bt1 pb-3"><a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.KnifeId">Add To Cart</a></div>
                 </div>
             </div>
         </div>

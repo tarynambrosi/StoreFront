@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using StoreFront.DATA.EF.Models;
+using StoreFront.UI.MVC.Models;
 
 namespace StoreFront.UI.MVC.Areas.Identity.Pages.Account
 {
@@ -156,7 +157,8 @@ namespace StoreFront.UI.MVC.Areas.Identity.Pages.Account
 
                     var userId = await _userManager.GetUserIdAsync(user);
 
-                    StorefrontContext _context = new StorefrontContext();
+                    StorefrontContext _context = new StorefrontContext();  
+
                     Customer customer = new Customer()
                     {
                         CustomerId = userId,
