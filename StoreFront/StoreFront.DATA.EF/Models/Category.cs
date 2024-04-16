@@ -7,7 +7,6 @@ namespace StoreFront.DATA.EF.Models
     {
         public Category()
         {
-            Knives = new HashSet<Knife>();
             Products = new HashSet<Product>();
         }
 
@@ -15,7 +14,6 @@ namespace StoreFront.DATA.EF.Models
         public string CategoryName { get; set; } = null!;
         public string? CategoryDescription { get; set; }
 
-        public virtual ICollection<Knife> Knives { get; set; }
         public virtual ICollection<Product> Products { get; set; }
     }
 }

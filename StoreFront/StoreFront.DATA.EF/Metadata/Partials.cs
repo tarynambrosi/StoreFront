@@ -19,13 +19,6 @@ namespace StoreFront.DATA.EF.Models//.Metadata
         public IFormFile? Image { get; set; }
     }
 
-    [ModelMetadataType(typeof(KnifeMetadata))]
-    public partial class Knife 
-    {
-        [NotMapped]
-        public IFormFile? Image { get; set; }
-    }
-
     [ModelMetadataType(typeof(OrderMetadata))]
     public partial class Order { }
 
@@ -34,7 +27,4 @@ namespace StoreFront.DATA.EF.Models//.Metadata
 
     [ModelMetadataType(typeof(CustomerMetadata))]
     public partial class Customer { }
-
-    [ModelMetadataType(typeof(KnifeBrandMetadata))]
-    public partial class KnifeBrand { }
 }

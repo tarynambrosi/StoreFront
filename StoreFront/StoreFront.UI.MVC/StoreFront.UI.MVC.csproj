@@ -9,8 +9,6 @@
 
   <ItemGroup>
     <Content Remove="Views\Shared\OriginalLayout.cshtml" />
-    <Content Remove="wwwroot\about.html" />
-    <Content Remove="wwwroot\contact.html" />
     <Content Remove="wwwroot\css\animate.min.css" />
     <Content Remove="wwwroot\css\bootstrap-grid.css" />
     <Content Remove="wwwroot\css\bootstrap-grid.css.map" />
@@ -63,7 +61,6 @@
     <Content Remove="wwwroot\images\twitter-icon.png" />
     <Content Remove="wwwroot\images\watchs-bg.png" />
     <Content Remove="wwwroot\images\youtub-icon.png" />
-    <Content Remove="wwwroot\index.html" />
     <Content Remove="wwwroot\js\bootstrap.bundle.js" />
     <Content Remove="wwwroot\js\bootstrap.bundle.js.map" />
     <Content Remove="wwwroot\js\bootstrap.bundle.min.js" />
@@ -81,8 +78,6 @@
     <Content Remove="wwwroot\js\plugin.js" />
     <Content Remove="wwwroot\js\popper.min.js" />
     <Content Remove="wwwroot\js\slider-setting.js" />
-    <Content Remove="wwwroot\testimonial.html" />
-    <Content Remove="wwwroot\watchs.html" />
   </ItemGroup>
 
   <ItemGroup>
@@ -95,8 +90,6 @@
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <None Include="Views\_ViewImports.cshtml" />
     <None Include="Views\_ViewStart.cshtml" />
-    <None Include="wwwroot\about.html" />
-    <None Include="wwwroot\contact.html" />
     <None Include="wwwroot\css\.DS_Store" />
     <None Include="wwwroot\css\animate.min.css" />
     <None Include="wwwroot\css\bootstrap-grid.css" />
@@ -150,7 +143,6 @@
     <None Include="wwwroot\images\twitter-icon.png" />
     <None Include="wwwroot\images\watchs-bg.png" />
     <None Include="wwwroot\images\youtub-icon.png" />
-    <None Include="wwwroot\index.html" />
     <None Include="wwwroot\js\.DS_Store" />
     <None Include="wwwroot\js\bootstrap.bundle.js" />
     <None Include="wwwroot\js\bootstrap.bundle.js.map" />
@@ -169,8 +161,6 @@
     <None Include="wwwroot\js\plugin.js" />
     <None Include="wwwroot\js\popper.min.js" />
     <None Include="wwwroot\js\slider-setting.js" />
-    <None Include="wwwroot\testimonial.html" />
-    <None Include="wwwroot\watchs.html" />
     <None Include="_Archive\css\.DS_Store" />
     <None Include="_Archive\js\.DS_Store" />
   </ItemGroup>

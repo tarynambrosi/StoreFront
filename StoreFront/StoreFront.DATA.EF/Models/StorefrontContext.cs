@@ -24,8 +24,6 @@ namespace StoreFront.DATA.EF.Models
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Customer> Customers { get; set; } = null!;
-        public virtual DbSet<Knife> Knives { get; set; } = null!;
-        public virtual DbSet<KnifeBrand> KnifeBrands { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
         public virtual DbSet<OrderProduct> OrderProducts { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
@@ -178,66 +176,6 @@ namespace StoreFront.DATA.EF.Models
                     .IsFixedLength();
             });
 
-            modelBuilder.Entity<Knife>(entity =>
-            {
-                entity.Property(e => e.KnifeImage)
-                    .HasMaxLength(75)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.KnifePrice).HasColumnType("money");
-
-                entity.Property(e => e.KnifeType)
-                    .HasMaxLength(75)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Category)
-                    .WithMany(p => p.Knives)
-                    .HasForeignKey(d => d.CategoryId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Knives_Categories");
-
-                entity.HasOne(d => d.KnifeBrand)
-                    .WithMany(p => p.Knives)
-                    .HasForeignKey(d => d.KnifeBrandId)
-                    .HasConstraintName("FK_Knives_KnifeBrands");
-
-                entity.HasOne(d => d.KnifeStatus)
-                    .WithMany(p => p.Knives)
-                    .HasForeignKey(d => d.KnifeStatusId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Knives_ProductStatuses1");
-            });
-
-            modelBuilder.Entity<KnifeBrand>(entity =>
-            {
-                entity.HasKey(e => e.BrandId);
-
-                entity.Property(e => e.Address)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.BrandName)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.City)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(24)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.State)
-                    .HasMaxLength(2)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Zip)
-                    .HasMaxLength(5)
-                    .IsUnicode(false)
-                    .IsFixedLength();
-            });
 
             modelBuilder.Entity<Order>(entity =>
             {

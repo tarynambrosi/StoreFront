@@ -74,10 +74,8 @@
             <td>
                 @if (User.IsInRole("Admin"))
                 {
-                    <span>
-                        <a asp-action="Edit" asp-route-id="@item.ProductId"><i class="fa fa-pencil-square"></i>Edit</a>
- |
-                    </span>
+                        <a asp-action="Edit" asp-route-id="@item.ProductId" class="text-warning"><i class="fa fa-edit"></i></a>
+
                     @* <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> | *@
 
                     @*
@@ -89,7 +87,7 @@
                     *@
                     @if (item.OrderProducts.Count() == 0)//item.OrderProducts retrieves any related records for the Product
                     {
-                        <a asp-action="Delete" asp-route-id="@item.ProductId" class="text-danger"><i class="fa fa-trash"></i>Delete</a>
+                        <a asp-action="Delete" asp-route-id="@item.ProductId" class="text-danger"><i class="fa fa-trash-o"></i></a>
                     }
                     else
                     {

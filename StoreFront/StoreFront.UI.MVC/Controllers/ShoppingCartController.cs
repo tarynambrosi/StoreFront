@@ -76,6 +76,7 @@ namespace StoreFront.UI.MVC.Controllers
                 shoppingCart.Add(product.ProductId, civm);
             }
 
+
             string jsonCart = JsonConvert.SerializeObject(shoppingCart);
             HttpContext.Session.SetString("cart", jsonCart);
 

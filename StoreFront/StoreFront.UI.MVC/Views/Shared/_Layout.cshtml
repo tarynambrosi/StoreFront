@@ -51,13 +51,13 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="~/https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- fonts -->
-    <link href="~/https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
     <!-- owl stylesheets -->
     <link rel="stylesheet" href="~/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="~/https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
     <link href="~/css/custom.css" rel="stylesheet" />
 </head>
 <body>
@@ -79,10 +79,7 @@
                                 <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a asp-action="Index" asp-controller="Products">Shop Products</a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-action="Index" asp-controller="Knives">Shop Knives</a>
+                                <a asp-action="Index" asp-controller="Products">Shop</a>
                             </li>
                             <li class="nav-item">
                                 <a asp-action="Contact" asp-controller="Home">Contact</a>
@@ -167,43 +164,37 @@
                 <div class="logo"><a asp-action="Index" asp-controller="Home"><img src="~/images/ambrosi-logo.png"></a></div>
                 <div class="menu_main">
                     <ul>
-                        <li><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
-                         <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Shop <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                        <li><a asp-action="TiledProducts" asp-controller="Products">Kitchen</a></li>
-                        <li><a asp-action="Index" asp-controller="Knives">Knives</a></li>
-                        </ul>
-                        </li> 
-                        @* @if (signInManager.IsSignedIn(User))
+                        <li><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                        <li><a class="nav-link" asp-action="TiledProducts" asp-controller="Products">Shop</a></li>
+                            @* @if (signInManager.IsSignedIn(User))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-action="Index" asp-controller="Orders">Orders</a>
-                            </li>
+                        <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Orders">Orders</a>
+                        </li>
                         } *@
                         <li><a class="nav-link" asp-action="Contact" asp-controller="Home">Contact</a></li>
-                        @if (User.IsInRole("Admin"))
-                        {
+                            @if (User.IsInRole("Admin"))
+                            {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Admin <span class="caret"></span></a>
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" data-reference="parent" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Admin<span class="caret"></span></a> 
                                 <ul class="dropdown-menu">
-                                    <li><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
-                                    <li><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
-                                    <li><a asp-action="Index" asp-controller="Suppliers">Suppliers</a></li>
-                                    <li><a asp-action="Index" asp-controller="Categories">Categories</a></li>
+                                    <li class="dropdown-item"><a asp-action="ListUsers" asp-controller="Administration">Users</a></li>
+                                    <li class="dropdown-item"><a asp-action="ListRoles" asp-controller="Administration">Roles</a></li>
+                                    <li class="dropdown-item"><a asp-action="Index" asp-controller="Suppliers">Suppliers</a></li>
+                                    <li class="dropdown-item"><a asp-action="Index" asp-controller="Categories">Categories</a></li>
                                 </ul>
                             </li>
-                        }
-                        @if (signInManager.IsSignedIn(User))
-                        {
-                            
-                         <partial name="_LoginPartial" /> 
-                        }
+                            }
+                            @if (signInManager.IsSignedIn(User))
+                            {
 
-                        @if (!signInManager.IsSignedIn(User))
-                        {
+                            <partial name="_LoginPartial" />
+                            }
+
+                            @if (!signInManager.IsSignedIn(User))
+                            {
                             <li><a class="nav-link" href="~/Identity/Account/Login">Login</a></li>
-                        }
+                            }
 
                         <li class="nav-item">
                             <a class="nav-link" asp-action="Index" asp-controller="ShoppingCart">
@@ -310,6 +301,8 @@
     <script src="~/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/jquery-3.0.0.min.js"></script>
     <script src="~/js/plugin.js"></script>
+    <!-- bootstrap js -->
+    <script src="~/js/bootstrap.js"></script>
     <!-- DataTables script reference -->
     <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
     <!--'jquery ajax unobtrusive cdn' -->

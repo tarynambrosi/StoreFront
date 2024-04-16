@@ -156,10 +156,10 @@ a,
      transition: all .3s ease-in-out;
 }
 
-img {
+img:not(.social_icon) {
      max-width: 100%;
      height: auto;
-     
+     border-radius: 50px;
 }
 
  :focus {
@@ -289,7 +289,7 @@ button {
     text-align: center;
     margin: 0 auto;
 }
-.menu_main ul {
+.menu_main ul:not(.dropdown-menu) {
     margin: 0px;
     padding: 0px;
     list-style: none;
@@ -390,12 +390,12 @@ button {
 
 #main_slider a.carousel-control-prev {
     position: absolute;
-    left: 120px;
+    left: 100px;
     top: 25%;
 }
 #main_slider a.carousel-control-next {
     position: absolute;
-    right: 120px;
+    right: 100px;
     top: 25%;
 }
 #main_slider .carousel-control-prev, 
@@ -404,7 +404,6 @@ button {
     height: 65px;
     border: 2px solid #ffffff;
     background: transparent !important;
-    opacity: 1;
     font-size: 30px;
     color: #ffffff;
     font-weight: bold;
@@ -567,7 +566,7 @@ h1.watchs_taital::after {
 }
 .border_main{
     width: 100%;
-    border: 2px solid #fefefe;
+    /*border: 2px solid #fefefe;*/
     border-radius: 3px;
     padding: 40px 0px;
 }
@@ -605,6 +604,7 @@ h1.watchs_taital::after {
     color: #ffffff;
     text-align: center;
     margin: 0px;
+    padding: 10px;
 }
 .client_main {
     width: 100%;

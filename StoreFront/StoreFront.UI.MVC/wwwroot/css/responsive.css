@@ -143,14 +143,15 @@
     width: 45%;
 }
 .box_main {
-    padding: 50px 20px;
+    padding: 120px 20px;
 }
 .client_right {
     width: 65%;
     float: right;
 }
 .client_name{
-    padding-top: 35px;
+    padding-top: 0px;
+    padding-left: 10px;
 }
 .mail_section_1 {
     width: 96%;
