@@ -53,7 +53,7 @@ namespace StoreFront.UI.MVC.Controllers
                 string message = $"You have received an email from {cvm.Name} (reply to: {cvm.Email}).\n* Subject: {cvm.Subject}\n* Message: \n{cvm.Message}";
                 var mm = new MimeMessage();
                 mm.From.Add(new MailboxAddress("No Reply", _config.GetValue<string>("Credentials:Email:User")));
-                mm.To.Add(new MailboxAddress("Spencer", _config.GetValue<string>("Credentials:Email:Recipient")));
+                mm.To.Add(new MailboxAddress("Taryn", _config.GetValue<string>("Credentials:Email:Recipient")));
                 mm.Subject = cvm.Subject;
                 mm.Body = new TextPart("HTML") { Text = message };
                 mm.ReplyTo.Add(new MailboxAddress(cvm.Name, cvm.Email));
